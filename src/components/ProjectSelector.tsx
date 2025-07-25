@@ -23,6 +23,8 @@ const handleProjectSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     }
   };
 
+  console.log(zones)
+
   return (
     <Form className="p-3">
       <Row>

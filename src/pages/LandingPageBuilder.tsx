@@ -21,12 +21,21 @@ const LandingPageBuilder: React.FC = () => {
                 zones={mockZones}
                 projects={mockProjects}
             />
+            </div>
+            <div className="col-md-6">
+            <ContentPreview />
+            {/* <AdaptiveLayoutManager /> */}
+          </div>
+            <div className="col-md-12">
             <UnitMultiSelect units={mockUnits} />
-            <AvailabilityIndicator />
+             </div>
+             <div className="col-md-6">
+           
             <PricingCalculator />
           </div>
           <div className="col-md-6">
-            <ContentPreview />
+             <AvailabilityIndicator />
+            {/* <ContentPreview /> */}
             <AdaptiveLayoutManager />
           </div>
         </div>

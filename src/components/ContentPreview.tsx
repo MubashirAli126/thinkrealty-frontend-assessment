@@ -12,7 +12,7 @@ const ContentPreview: React.FC = () => {
   } = useAppSelector((state: RootState) => state.landingPage);
 
   const isArabic = contentPersonalization.language === 'ar';
-
+  console.log(pricingCalculations)
   return (
     <Card className="mt-3 mb-3 shadow-sm">
       <Card.Body>
@@ -25,7 +25,7 @@ const ContentPreview: React.FC = () => {
               {isArabic ? 'عدد الوحدات المختارة' : 'Units Selected'}: {selectedUnits.length}
             </p>
             <p>
-              {isArabic ? 'السعر الإجمالي' : 'Total Price'}: {pricingCalculations.total?.toLocaleString?.()} {isArabic ? 'ر.س' : 'SAR'}
+              {isArabic ? 'السعر الإجمالي' : 'Total Price'}: {pricingCalculations.totalPrice?.toLocaleString?.()} {isArabic ? 'ر.س' : 'SAR'}
             </p>
             <hr />
             <p className="text-muted">

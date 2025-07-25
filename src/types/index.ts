@@ -16,7 +16,7 @@ export interface Project {
   project_name: string;
   area_id: number;
   zone_id: number;
-  completion_status: 'under_construction' | 'ready' | 'off_plan';
+    completion_status: "under_construction" | "ready" | "off_plan" | "completed" | "ready_to_move";
   min_price: number;
   max_price: number;
   total_units: number;
@@ -27,7 +27,7 @@ export interface Unit {
   unit_id: number;
   project_id: number;
   unit_number: string;
-  property_type: 'apartment' | 'villa' | 'townhouse' | 'studio';
+  property_type: 'apartment' | 'villa' | 'townhouse' | 'studio' | 'penthouse';
   bedrooms: number;
   area_sqft: number;
   price: number;
