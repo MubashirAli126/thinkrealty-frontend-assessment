@@ -3,6 +3,7 @@ import { Form, Row, Col } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { setSelectedProject } from '../redux/slices/landingPageSlice';
 import { Area, Zone, Project } from '../types';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   areas: Area[];
@@ -15,22 +16,22 @@ const ProjectSelector: React.FC<Props> = ({ areas, zones, projects }) => {
   const [selectedArea, setSelectedArea] = useState<number | null>(null);
   const [selectedZone, setSelectedZone] = useState<number | null>(null);
 
-const handleProjectSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-  const project = projects.find(p => p.project_id === +e.target.value);
-    if (project) {
-      console.log("Dispatching selected project:", project); // ✅ Add this
-      dispatch(setSelectedProject(project));
-    }
-  };
+  const { t } = useTranslation();
 
-  console.log(zones)
+  const handleProjectSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const project = projects.find(p => p.project_id === +e.target.value);
+      if (project) {
+        console.log("Dispatching selected project:", project); // ✅ Add this
+        dispatch(setSelectedProject(project));
+      }
+    };
 
   return (
     <Form className="p-3">
       <Row>
         <Col xs={12} md={4}>
           <Form.Group controlId="areaSelect">
-            <Form.Label>Select Area</Form.Label>
+            <Form.Label>{t('Select_Area')}</Form.Label>
            <Form.Select onChange={(e) => setSelectedArea(+e.target.value)}>
             <option value="">Select Area</option>
             {areas.map((area) => {
@@ -46,7 +47,7 @@ const handleProjectSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
 
         <Col xs={12} md={4}>
           <Form.Group controlId="zoneSelect">
-            <Form.Label>Select Zone</Form.Label>
+            <Form.Label>{t('Select_Zone')}</Form.Label>
             <Form.Select
               onChange={(e) => setSelectedZone(+e.target.value)}
               disabled={!selectedArea}
@@ -65,7 +66,7 @@ const handleProjectSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
 
         <Col xs={12} md={4}>
           <Form.Group controlId="projectSelect">
-            <Form.Label>Select Project</Form.Label>
+            <Form.Label>{t('selected_project')}</Form.Label>
             <Form.Select onChange={handleProjectSelect} disabled={!selectedZone}>
               <option value="">Select Project</option>
               {projects

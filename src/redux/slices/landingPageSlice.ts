@@ -79,6 +79,9 @@ const landingPageSlice = createSlice({
     setLayoutMode: (state, action: PayloadAction<'standard' | 'compact' | 'performance' | 'focus'>) => {
       state.layoutMode = action.payload;
     },
+    toggleLanguage: (state) => {
+      state.isArabic = !state.isArabic;
+    }
   },
 });
 
@@ -89,5 +92,5 @@ export const {
   updateConflictState,
 } = landingPageSlice.actions;
 
-export const { setSelectedProject, setPricingCalculations, setAvailabilityStatus, setLayoutMode } = landingPageSlice.actions;
+export const { setSelectedProject, setPricingCalculations, setAvailabilityStatus, setLayoutMode, toggleLanguage } = landingPageSlice.actions;
 export default landingPageSlice.reducer;

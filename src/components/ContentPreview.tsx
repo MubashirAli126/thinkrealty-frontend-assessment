@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
 import { useAppSelector } from '../redux/hooks';
 import { RootState } from '../redux/store';
+import { useTranslation } from 'react-i18next';
 
 const ContentPreview: React.FC = () => {
   const {
@@ -11,28 +12,29 @@ const ContentPreview: React.FC = () => {
     contentPersonalization
   } = useAppSelector((state: RootState) => state.landingPage);
 
-  const isArabic = contentPersonalization.language === 'ar';
-  console.log(pricingCalculations)
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === 'ar';
+
   return (
     <Card className="mt-3 mb-3 shadow-sm">
       <Card.Body>
         <Row>
           <Col>
             <h5>
-              {isArabic ? 'مشروع محدد' : 'Selected Project'}: {selectedProject?.project_name || (isArabic ? 'غير متوفر' : 'N/A')}
+              {t('selected_project')}: {selectedProject?.project_name || t('not_available')}
             </h5>
             <p>
-              {isArabic ? 'عدد الوحدات المختارة' : 'Units Selected'}: {selectedUnits.length}
+              {t('units_selected')}: {selectedUnits.length}
             </p>
             <p>
-              {isArabic ? 'السعر الإجمالي' : 'Total Price'}: {pricingCalculations.totalPrice?.toLocaleString?.()} {isArabic ? 'ر.س' : 'SAR'}
+              {t('total_price')}: {pricingCalculations.totalPrice?.toLocaleString?.()} SAR
             </p>
-            <hr />
+            {/* <hr />
             <p className="text-muted">
               {isArabic
                 ? contentPersonalization.arabicDescription
                 : contentPersonalization.englishDescription}
-            </p>
+            </p> */}
           </Col>
         </Row>
       </Card.Body>

@@ -7,12 +7,14 @@ import ContentPreview from '../components/ContentPreview';
 import SmartNotificationCenter from '../components/SmartNotificationCenter';
 import AdaptiveLayoutManager from '../components/AdaptiveLayoutManager';
 import { mockAreas, mockZones, mockProjects, mockUnits } from '../mock/mockData';
+import Header from '../components/Header';
 const LandingPageBuilder: React.FC = () => {
   return (
     <>
+    <Header />
      <SmartNotificationCenter />
       <div className="container py-4">
-        <h2>Landing Page Builder</h2>
+        {/* <h2>Landing Page Builder</h2> */}
 
         <div className="row">
           <div className="col-md-6">
